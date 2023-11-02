@@ -59,6 +59,9 @@ public class GenerateApplicants {
         return applicant;
     }
 
+    public static String generatePSU(Random random) { return gradingPossibilities[random.nextInt(gradingPossibilities.length)]; }
+    public static String generateSchoolTier(Random random) { return schoolPossibilities[random.nextInt(schoolPossibilities.length)]; }
+
 
 
 

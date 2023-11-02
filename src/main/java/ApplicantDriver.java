@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 
@@ -15,6 +16,8 @@ public class ApplicantDriver {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Would you like to apply? Y/n ");
         if (scanner.nextLine().equals("Y")) {
+            Random random = new Random();
+
             Applicant applicant = new Applicant();
             System.out.print("Welcome! Please respond to the following prompts: ");
             System.out.print("\n\tEnter your name: ");
@@ -52,11 +55,12 @@ public class ApplicantDriver {
             applicant.setFirstGeneration(scanner.nextLine().equals("Y"));
             System.out.println("\nThank you for your application!");
             System.out.println("-----------------------------\n");
-            applicant.setCoursework("Perfect");
-            applicant.setLettersOfRecommendation("Perfect");
-            applicant.setWorkExperience("Perfect");
-            applicant.setEssay("Perfect");
-            applicant.setSchoolAttended("Tier 1");
+
+            applicant.setCoursework(GenerateApplicants.generatePSU(random));
+            applicant.setLettersOfRecommendation(GenerateApplicants.generatePSU(random));
+            applicant.setWorkExperience(GenerateApplicants.generatePSU(random));
+            applicant.setEssay(GenerateApplicants.generatePSU(random));
+            applicant.setSchoolAttended(GenerateApplicants.generateSchoolTier(random));
 
             DecisionTree.evaluate(applicant);
         }
